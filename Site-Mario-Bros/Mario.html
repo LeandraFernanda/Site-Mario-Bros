@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Bros - O Encanador Mais Famoso do Mundo</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background-color: #e60012;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 0 #000;
+        }
+        
+        .logo span {
+            color: #3a0fd4;
+        }
+        
+        /* Navegação */
+        nav {
+            background-color: #000;
+            padding: 15px 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: #e60012;
+        }
+        
+        /* Seção Hero */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cinebuzz.com.br/media/uploads/feedsync/conheca_a_historia_de_super_mario_bros.jogo_que_encanta_geracoes.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px #000;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 3px #000;
+        }
+        
+        /* Seção História */
+        .history {
+            padding: 60px 0;
+            background-size: cover; 
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a1011;
+            font-size: 2.2rem;
+        }
+        
+        .history-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .history-text {
+            flex: 1;
+        }
+        
+        .history-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .history-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .history-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Galeria de Fotos */
+        .gallery {
+            padding: 60px 0;
+            background-image:  url("https://m.media-amazon.com/images/I/71lPNU5Tc5L.jpg");
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            height: 250px;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-item:hover .photo-caption {
+            transform: translateY(0);
+        }
+        
+        /* Tabela de Jogos */
+        .games {
+            padding: 60px 0;
+            background-image: url("https://projectn.com.br/wp-content/uploads/2021/02/super-mario-3d-world-bowsers-fury-1024x576.jpg");
+            
+        }
+        
+            
+        
+        .games-table {
+            width: 100%;
+            
+            margin-top: 30px;
+        }
+        
+        .games-table th, .games-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #3cdf3c;
+        }
+        
+        .games-table th {
+            background-color: #e7616d;
+            color: rgb(36, 33, 33);
+        }
+        
+        .games-table tr:nth-child(even) {
+            background-color: #e6c3c3;
+        }
+        
+        .games-table tr:hover {
+            background-color: #08cf4b;
+        }
+        
+        /* Formulário de Cadastro */
+        .register {
+            padding: 60px 0;
+            background-image:  url("https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000034439/ccb69a8bf2746b2dc0a9b11a9e48c9893baa1631486326f0d681b7a36385221f");
+        }
+        
+        .register-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgb(192, 175, 219);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(9, 201, 35, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #e60012;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #c5000f;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #e01a1a;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #f8d706;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .history-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="logo">SUPER <span>MARIO</span> BROS</div>
+        </div>
+    </header>
+    
+    <!-- Navegação -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#history">História</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#games">Jogos</a></li>
+                <li><a href="#register">Cadastro</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>O Mundo Encantador de Mario Bros</h1>
+            <p>Conheça a história por trás do jogo mais icônico da Nintendo e do seu criador, Shigeru Miyamoto</p>
+        </div>
+    </section>
+    
+    <!-- Seção História -->
+    <section id="history" class="history">
+        <div class="container">
+            <h2 class="section-title">O Criador de Mario Bros</h2>
+            <div class="history-content">
+                <div class="history-text">
+                    <h3>Shigeru Miyamoto, nascido em 16 de novembro de 1952, é um designer e produtor de jogos japonês que trabalha para a Nintendo. Ele é amplamente considerado como um dos mais influentes criadores de jogos eletrônicos de todos os tempos.</h3>
+                    <h3>Miyamoto começou sua carreira na Nintendo em 1977, inicialmente trabalhando como
+                    Miyamoto criou Mario em 1981 para o jogo "Donkey Kong", onde o personagem era conhecido como "Jumpman". O nome "Mario" foi inspirado no proprietário do armazém da Nintendo of America, Mario Segale.</h3>
+                    <h3>O jogo "Super Mario Bros.", lançado em 1985 para o Nintendo Entertainment System (NES), revolucionou a indústria de jogos e estabeleceu muitos padrões para jogos de plataforma. Miyamoto projetou Mario como um encanador italiano porque o jogo se passava em um ambiente de encanamento.</h3>
+                    <h3>Além da série Mario, Miyamoto também criou outras franquias icônicas como The Legend of Zelda, Donkey Kong, Star Fox e Pikmin. Sua filosofia de design centrada na jogabilidade e na diversão pura influenciou gerações de desenvolvedores de jogos.</h3>
+                </div>
+                <div class="history-image">
+                    <img src="https://f.i.uol.com.br/fotografia/2024/11/06/1730937636672c03245d50f_1730937636_3x2_md.jpg" alt="Shigeru Miyamoto">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Galeria de Fotos -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Galeria de Fotos</h2>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="https://img.odcdn.com.br/wp-content/uploads/2023/02/super-mario-bros-o-filme.jpg" alt="Mario e Luigi">
+                    <div class="photo-caption">
+                        <h3>Mario e Luigi</h3>
+                        <p>Os irmãos encanadores mais famosos do mundo dos games</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000000153/de697f487a36d802dd9a5ff0341f717c8486221f2f1219b675af37aca63bc453" alt="Mario Kart">
+                    <div class="photo-caption">
+                        <h3>Mario Kart</h3>
+                        <p>A série de corrida que conquistou milhões de fãs</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://jogoveio.com.br/wp-content/uploads/2016/11/4928-super-mario-world-cover-front--418x350.jpg" alt="Super Mario World">
+                    <div class="photo-caption">
+                        <h3>Super Mario World</h3>
+                        <p>O clássico lançado para o Super Nintendo em 1990</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://s.zst.com.br/cms-assets/2023/04/personagens-mario-capa.webp" alt="Personagens">
+                    <div class="photo-caption">
+                        <h3>Personagens</h3>
+                        <p>O diversificado universo de personagens de Mario</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000001130/c42553b4fd0312c31e70ec7468c6c9bccd739f340152925b9600631f2d29f8b5" alt="Super Mario Odyssey">
+                    <div class="photo-caption">
+                        <h3>Super Mario Odyssey</h3>
+                        <p>O aclamado jogo lançado para Nintendo Switch</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjW8oSJFzPAEIj5b8X6tgsjhF5XJ-Jz_wCT_mVpE7jysE-J-2DiH_SgPgwpWydMsg2uRuz07Bx1lEa_nKBYrdIr6MlKAzRyNWUJ7FD9Prv4KD4MRG5_6mg52zVvDcaP_elPfa52QRFk4Ak/s1600/SMW3D.jpg" alt="Mario 3D">
+                    <div class="photo-caption">
+                        <h3>Mario 3D</h3>
+                        <p>A evolução gráfica do personagem ao longo dos anos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tabela de Jogos -->
+    <section id="games" class="games">
+        <div class="container">
+            <h2 class="section-title">Principais Jogos da Série</h2>
+            <table class="games-table">
+                <thead>
+                    <tr>
+                        <th>Ano</th>
+                        <th>Título</th>
+                        <th>Plataforma</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1985</td>
+                        <td>Super Mario Bros.</td>
+                        <td>NES</td>
+                        <td>O jogo que iniciou a franquia, com Mario resgatando a Princesa Peach do Bowser.</td>
+                    </tr>
+                    <tr>
+                        <td>1988</td>
+                        <td>Super Mario Bros. 3</td>
+                        <td>NES</td>
+                        <td>Introduziu muitos elementos clássicos como o mapa mundial e power-ups como a folha de Tanooki.</td>
+                    </tr>
+                    <tr>
+                        <td>1990</td>
+                        <td>Super Mario World</td>
+                        <td>Super Nintendo</td>
+                        <td>Apresentou Yoshi e expandiu significativamente o design de níveis.</td>
+                    </tr>
+                    <tr>
+                        <td>1996</td>
+                        <td>Super Mario 64</td>
+                        <td>Nintendo 64</td>
+                        <td>Primeiro jogo 3D da série, revolucionando jogos de plataforma.</td>
+                    </tr>
+                    <tr>
+                        <td>2002</td>
+                        <td>Super Mario Sunshine</td>
+                        <td>GameCube</td>
+                        <td>Introduziu o FLUDD, uma máquina de água que Mario usa para limpar ilha Delfino.</td>
+                    </tr>
+                    <tr>
+                        <td>2007</td>
+                        <td>Super Mario Galaxy</td>
+                        <td>Wii</td>
+                        <td>Jogo com física espacial inovadora e design de níveis criativo.</td>
+                    </tr>
+                    <tr>
+                        <td>2017</td>
+                        <td>Super Mario Odyssey</td>
+                        <td>Nintendo Switch</td>
+                        <td>Aclamado por sua jogabilidade inovadora e mundos diversos.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <!-- Formulário de Cadastro -->
+    <section id="register" class="register">
+        <div class="container">
+            <h2 class="section-title">Cadastre-se no Clube Mario</h2>
+            <div class="register-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate">Data de Nascimento</label>
+                        <input type="date" id="birthdate" name="birthdate">
+                    </div>
+                    <div class="form-group">
+                        <label for="favorite-game">Jogo Favorito</label>
+                        <select id="favorite-game" name="favorite-game">
+                            <option value="">Selecione...</option>
+                            <option value="super-mario-bros">Super Mario Bros.</option>
+                            <option value="super-mario-bros-3">Super Mario Bros. 3</option>
+                            <option value="super-mario-world">Super Mario World</option>
+                            <option value="super-mario-64">Super Mario 64</option>
+                            <option value="super-mario-sunshine">Super Mario Sunshine</option>
+                            <option value="super-mario-galaxy">Super Mario Galaxy</option>
+                            <option value="super-mario-odyssey">Super Mario Odyssey</option>
+                            <option value="other">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Sua Experiência com Mario Bros</label>
+                        <textarea id="experience" name="experience"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="newsletter"> Desejo receber novidades por e-mail
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Clube Mario Bros - Todos os direitos reservados</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>Este site não é afiliado à Nintendo. Criado para fins educacionais.</p>
+        </div>
+    </footer>
+    
+    <!-- Ícones do Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
